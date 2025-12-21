@@ -11,6 +11,7 @@
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # inputs.self.nixosModules.example
+    inputs.self.nixosModules.hyprland
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -22,6 +23,9 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+
+  # Enable Hyprland module
+  modules.hyprland.enable = true;
 
   nixpkgs = {
     # You can add overlays here
