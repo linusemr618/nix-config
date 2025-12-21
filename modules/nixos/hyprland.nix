@@ -18,6 +18,7 @@
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
       ];
     };
@@ -82,6 +83,7 @@
     ];
 
     # Enable OpenGL
+    # Note: hardware.opengl is deprecated in favor of hardware.graphics in NixOS 24.05+
     hardware.opengl = {
       enable = true;
       driSupport = true;
@@ -96,11 +98,6 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-    };
-
-    # Add user to video group for brightness control
-    users.users = lib.mkIf (config.users.users ? your-username) {
-      your-username.extraGroups = [ "video" ];
     };
   };
 }

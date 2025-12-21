@@ -502,6 +502,7 @@
     # Additional packages
     home.packages = with pkgs; [
       # Fonts
+      # Note: nerdfonts syntax changed in newer nixpkgs to nerd-fonts.jetbrains-mono
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
       # Utilities
