@@ -12,19 +12,12 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    omarchy-nix = {
-      url = "github:henrysipp/omarchy-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    omarchy-nix,
     ...
   } @ inputs: let
     # Supported systems for your flake packages, shell, etc.
