@@ -14,15 +14,15 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/mapper/luks-bd7e6fba-8817-4295-a6d6-20d74ecc8b90";
+    { device = "/dev/mapper/luks-790845fb-5510-436c-9e2b-3abff24f506a";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
-  boot.initrd.luks.devices."luks-bd7e6fba-8817-4295-a6d6-20d74ecc8b90".device = "/dev/disk/by-uuid/bd7e6fba-8817-4295-a6d6-20d74ecc8b90";
+  boot.initrd.luks.devices."luks-790845fb-5510-436c-9e2b-3abff24f506a".device = "/dev/disk/by-uuid/790845fb-5510-436c-9e2b-3abff24f506a";
 
   fileSystems."/home" =
-    { device = "/dev/mapper/luks-bd7e6fba-8817-4295-a6d6-20d74ecc8b90";
+    { device = "/dev/mapper/luks-790845fb-5510-436c-9e2b-3abff24f506a";
       fsType = "btrfs";
       options = [ "subvol=@home" ];
     };
