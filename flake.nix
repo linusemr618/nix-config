@@ -1,17 +1,21 @@
 {
-  description = "Your new nix config";
+  description = "NixOS configuration with flakes and home-manager";
 
   inputs = {
-    # Nixpkgs
+    # Nixpkgs stable (25.11 release)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
+    
+    # Nixpkgs unstable for bleeding-edge packages
+    # Access via pkgs.unstable.<package> (see overlays/default.nix)
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # Home manager
+    # Home Manager - matches nixpkgs version
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    
+    # Add more inputs here as needed:
+    # hardware.url = "github:nixos/nixos-hardware";
+    # agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -20,7 +24,7 @@
     home-manager,
     ...
   } @ inputs: let
-    # Supported systems for your flake packages, shell, etc.
+    # Systems supported by this flake
     systems = [
       "aarch64-linux"
       "i686-linux"
@@ -28,52 +32,55 @@
       "aarch64-darwin"
       "x86_64-darwin"
     ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
+    
+    # Helper to generate attributes for all systems
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    # Your custom packages
-    # Accessible through 'nix build', 'nix shell', etc
+    # Custom packages from ./pkgs
+    # Build with: nix build .#package-name
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    
+    # Code formatter for nix files
+    # Format with: nix fmt
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    # Your custom packages and modifications, exported as overlays
+    # Overlays for custom and modified packages
     overlays = import ./overlays {inherit inputs;};
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
+    
+    # Reusable NixOS modules
     nixosModules = import ./modules/nixos;
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
+    
+    # Reusable home-manager modules
     homeManagerModules = import ./modules/home-manager;
 
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
+    # NixOS system configurations
+    # Build with: nixos-rebuild switch --flake .#hostname
     nixosConfigurations = {
-      # FIXME replace with your hostname
       nix-e15411 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          # > Our main nixos configuration file <
           ./hosts/e15411
         ];
       };
+      
+      # Add more hosts here:
+      # another-host = nixpkgs.lib.nixosSystem {
+      #   specialArgs = {inherit inputs;};
+      #   modules = [./hosts/another-host];
+      # };
     };
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    #homeConfigurations = {
-    #  # FIXME replace with your username@hostname
-    #  "linus@nix-e15411" = home-manager.lib.homeManagerConfiguration {
-    #    # Home-manager requires 'pkgs' instance
-    #    pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure 
-    #    extraSpecialArgs = {inherit inputs;};
-    #    modules = [
-    #      # > Our main home-manager configuration file <
-    #      ./home-manager/home.nix
-    #    ];
-    #  };
-    #};
+    # Standalone home-manager configuration (alternative to NixOS module integration)
+    # Activate with: home-manager switch --flake .#username@hostname
+    # Currently disabled in favor of NixOS module integration
+    # Uncomment and configure if you want standalone home-manager:
+    #
+    # homeConfigurations = {
+    #   "linus@nix-e15411" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    #     extraSpecialArgs = {inherit inputs;};
+    #     modules = [./home/linus];
+    #   };
+    # };
   };
 }

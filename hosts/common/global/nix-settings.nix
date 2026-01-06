@@ -1,3 +1,4 @@
+# Nix daemon and flake configuration
 {
   config,
   inputs,
@@ -5,26 +6,15 @@
   ...
 }: {
   nixpkgs = {
-    # You can add overlays here
+    # Overlays for custom and unstable packages
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      inputs.self.overlays.additions
-      inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
+      inputs.self.overlays.additions      # Custom packages from ./pkgs
+      inputs.self.overlays.modifications  # Modified existing packages
+      inputs.self.overlays.unstable-packages # Access to nixpkgs-unstable
     ];
-    # Configure your nixpkgs instance
+    
+    # Allow unfree packages (e.g., proprietary software)
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
   };
@@ -33,18 +23,34 @@
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
-      # Enable flakes and new 'nix' command
+      # Enable flakes and new nix commands
       experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
+      
+      # Disable global flake registry (use flake.lock instead)
       flake-registry = "";
+      
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
+      
+      # Optional: Enable distributed builds
+      # trusted-users = [ "root" "@wheel" ];
+      
+      # Optional: Automatic garbage collection
+      # auto-optimise-store = true;
     };
-    # Opinionated: disable channels
+    
+    # Disable legacy channels in favor of flakes
     channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
+    # Make flake inputs accessible via nix registry and NIX_PATH
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    
+    # Optional: Garbage collection settings
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 30d";
+    # };
   };
 }
