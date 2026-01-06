@@ -21,7 +21,6 @@ Import these modules in your host configuration when you need the functionality:
 - `gaming.nix` - Gaming support (Steam, Lutris, etc.)
 - `virtualization.nix` - QEMU/KVM and container support
 - `media.nix` - Media production tools
-- `work.nix` - Work-related tools and VPN
 
 ## Creating New Optional Modules
 
