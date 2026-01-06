@@ -2,6 +2,14 @@
 
 My personal NixOS configuration using Nix Flakes and home-manager.
 
+## 📚 Documentation
+
+- **[Quick Reference](QUICKREF.md)** - Common commands and quick tips
+- **[TODO](TODO.md)** - Future improvements and feature ideas
+- **[Contributing](CONTRIBUTING.md)** - Development guidelines
+- **[Hosts README](hosts/README.md)** - Host configuration guide
+- **[Home README](home/README.md)** - Home-manager configuration guide
+
 ## 📁 Structure
 
 ```
@@ -68,6 +76,11 @@ nix fmt
 - **Flakes**: Modern Nix configuration with reproducible builds
 - **Home-manager**: Declarative user environment configuration
 - **Modular Structure**: Easy to add new hosts and users
+- **Optional Modules**: Feature modules you can enable as needed
+  - Development tools (Git, build tools, direnv)
+  - Gaming (Steam, Lutris, Wine)
+  - Virtualization (QEMU/KVM, Podman)
+  - Media production (video/audio editing tools)
 - **Overlays**: Support for custom and unstable packages
 
 ## 📝 Adding a New Host
@@ -87,6 +100,26 @@ nix fmt
    ```
 
 ## 🛠️ Development
+
+### Enabling Optional Features
+
+Edit your host configuration (`hosts/<hostname>/default.nix`) and add the desired optional modules:
+
+```nix
+{
+  imports = [
+    # ... existing imports ...
+    ../common/optional/development.nix
+    ../common/optional/gaming.nix
+    ../common/optional/virtualization.nix
+    ../common/optional/media.nix
+  ];
+}
+```
+
+See [hosts/common/optional/README.md](hosts/common/optional/README.md) for available modules.
+
+### More Information
 
 See [TODO.md](TODO.md) for planned improvements and feature ideas.
 
