@@ -1,13 +1,14 @@
 {
-  inputs,
-  ...
-}: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+#  inputs,
+#  ...
+#}: {
+  #imports = [
+  #  inputs.home-manager.nixosModules.home-manager
+  #];
   
   users.users = {
     linus = {
+      description = "Linus Emmerich";
       initialPassword = "default";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
@@ -17,12 +18,12 @@
     };
   };
   
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.linus = {
-      imports = [
-        ../../../../home/linus
-      ];
-    };
-  };
+  #home-manager = {
+  #  extraSpecialArgs = { inherit inputs; };
+  #  users.linus = {
+  #    imports = [
+  #      ../../../../home/linus
+  #    ];
+  #  };
+  #};
 }
