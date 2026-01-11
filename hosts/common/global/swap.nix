@@ -18,6 +18,8 @@
   }];
 
   # Resume device for hibernation (the encrypted root partition)
+  # This must match the root device in hardware-configuration.nix
+  # For this specific host (e15411), it's the LUKS-encrypted btrfs partition
   boot.resumeDevice = "/dev/mapper/luks-790845fb-5510-436c-9e2b-3abff24f506a";
   
   # Kernel parameter for hibernation resume
@@ -32,8 +34,8 @@
   # Systemd service to handle btrfs-specific swapfile setup
   systemd.services.btrfs-swapfile-setup = {
     description = "Prepare swapfile for btrfs filesystem";
-    requiredBy = [ "swapfile.swap" ];
-    before = [ "swapfile.swap" ];
+    requiredBy = [ "var-swapfile.swap" ];
+    before = [ "var-swapfile.swap" ];
     
     serviceConfig = {
       Type = "oneshot";
@@ -51,11 +53,11 @@
       # If swapfile already exists, ensure CoW is disabled
       if [ -f "$SWAPFILE" ]; then
         echo "Swapfile exists, ensuring CoW is disabled..."
-        ${pkgs.e2fsprogs}/bin/chattr +C "$SWAPFILE" 2>/dev/null || true
+        ${pkgs.btrfs-progs}/bin/chattr +C "$SWAPFILE" 2>/dev/null || true
       else
         echo "Swapfile will be created by NixOS swap activation"
         # Disable CoW on the directory so new files inherit this attribute
-        ${pkgs.e2fsprogs}/bin/chattr +C $(dirname "$SWAPFILE") 2>/dev/null || true
+        ${pkgs.btrfs-progs}/bin/chattr +C $(dirname "$SWAPFILE") 2>/dev/null || true
       fi
       
       # After swapfile is created and activated, print instructions for hibernation
