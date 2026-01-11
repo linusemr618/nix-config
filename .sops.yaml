@@ -1,0 +1,13 @@
+# SOPS configuration file
+# This file defines which keys can decrypt which secrets
+keys:
+  # Add your age public keys here
+  # Example: &host_e15411 age1234...
+  # To generate an age key: nix-shell -p age --run "age-keygen -o ~/.config/sops/age/keys.txt"
+  
+creation_rules:
+  # WiFi secrets for all hosts
+  - path_regex: secrets/wifi\.yaml$
+    # Add your age public keys here
+    # age: 
+    #   - *host_e15411

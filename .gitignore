@@ -4,3 +4,8 @@ result-*
 
 # Ignore automatically generated direnv output
 .direnv
+
+# SOPS: Ignore unencrypted secrets (only encrypted versions should be committed)
+# Comment out the line below if you want to commit unencrypted template files
+# secrets/*.yaml
+

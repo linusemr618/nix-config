@@ -12,6 +12,7 @@
     ./nix-settings.nix
     ./openssh.nix
     ./printing.nix
+    ./wifi-sops.nix
   ];
 
   environment.systemPackages = with pkgs; [
