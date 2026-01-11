@@ -42,7 +42,7 @@ in {
         # Generate with: nix-shell -p age --run "age-keygen -o /var/lib/sops-nix/key.txt"
         keyFile = "/var/lib/sops-nix/key.txt";
         # For testing/development, you can also use:
-        # keyFile = "/home/linus/.config/sops/age/keys.txt";
+        # keyFile = "/home/username/.config/sops/age/keys.txt";
         
         # Generate the key file if it doesn't exist (for automated deployment)
         generateKey = true;
@@ -69,29 +69,23 @@ in {
     # 2. Use wpa_supplicant instead of NetworkManager
     # 3. Manually configure networks using nmcli with the decrypted secrets
     
-    # For now, we'll set up the secrets infrastructure and provide an example
-    # systemd service that could be used to configure WiFi networks
-    systemd.services.configure-wifi-from-sops = {
-      description = "Configure WiFi networks from SOPS secrets";
-      wantedBy = ["multi-user.target"];
-      after = ["network-pre.target"];
-      before = ["network.target"];
-      
-      # This is a placeholder service
-      # In practice, you would need to read the secrets and configure NetworkManager
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      
-      # Example script (not functional without actual secrets defined)
-      script = ''
-        # echo "WiFi secrets are available in /run/secrets/"
-        # Example: nmcli connection add type wifi con-name "MyNetwork" \
-        #   ifname wlan0 ssid "MyNetwork" wifi-sec.key-mgmt wpa-psk \
-        #   wifi-sec.psk "$(cat /run/secrets/wifi-my-network)"
-        true
-      '';
-    };
+    # Uncomment and customize the systemd service below to automatically configure WiFi networks:
+    # systemd.services.configure-wifi-from-sops = {
+    #   description = "Configure WiFi networks from SOPS secrets";
+    #   wantedBy = ["multi-user.target"];
+    #   after = ["network-pre.target"];
+    #   before = ["network.target"];
+    #   
+    #   serviceConfig = {
+    #     Type = "oneshot";
+    #     RemainAfterExit = true;
+    #   };
+    #   
+    #   script = ''
+    #     # Example: nmcli connection add type wifi con-name "MyNetwork" \
+    #     #   ifname wlan0 ssid "MyNetwork" wifi-sec.key-mgmt wpa-psk \
+    #     #   wifi-sec.psk "$(cat /run/secrets/wifi-my-network)"
+    #   '';
+    # };
   };
 }
