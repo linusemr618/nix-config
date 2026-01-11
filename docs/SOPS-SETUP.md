@@ -95,6 +95,19 @@ nix run nixpkgs#sops -- secrets/wifi.yaml
 
 ## Using WiFi Passwords in Your System
 
+### Configuring Which Networks to Decrypt
+
+In your host configuration (e.g., `hosts/e15411/default.nix`), specify which WiFi networks you want to make available:
+
+```nix
+networking.wireless.sops = {
+  enable = true;
+  networks = ["home_network" "work_network"];
+};
+```
+
+This will create secrets at `/run/secrets/wifi-home-network` and `/run/secrets/wifi-work-network` that you can use to configure your WiFi connections.
+
 ### Option 1: Manual Configuration with NetworkManager
 
 After the system has booted with the SOPS configuration, your secrets will be available in `/run/secrets/`. You can use them with `nmcli`:
@@ -104,15 +117,16 @@ After the system has booted with the SOPS configuration, your secrets will be av
 ls /run/secrets/
 
 # Connect to a WiFi network using a secret
+# Replace "MyHomeNetwork" with your actual SSID
 sudo nmcli connection add type wifi con-name "MyHomeNetwork" \
   ifname wlan0 ssid "MyHomeNetwork" \
   wifi-sec.key-mgmt wpa-psk \
   wifi-sec.psk "$(sudo cat /run/secrets/wifi-home-network)"
 ```
 
-### Option 2: Automated Configuration
+### Option 2: Automated Configuration with a Systemd Service
 
-You can create specific secrets in the `wifi-sops.nix` module and use a systemd service to automatically configure WiFi networks. See the comments in `hosts/common/global/wifi-sops.nix` for examples.
+You can extend the placeholder systemd service in `wifi-sops.nix` to automatically configure WiFi networks on boot. This is useful for headless systems or automated deployments.
 
 ### Option 3: wpa_supplicant
 

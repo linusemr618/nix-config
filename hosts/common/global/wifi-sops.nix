@@ -19,6 +19,16 @@ in {
       default = ../../../secrets/wifi.yaml;
       description = "Path to the SOPS-encrypted WiFi secrets file";
     };
+
+    networks = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      example = ["home_network" "work_network"];
+      description = ''
+        List of WiFi network names (as defined in the secrets file under wifi_networks).
+        Secrets will be created for each network at /run/secrets/wifi-<network-name>
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -40,10 +50,16 @@ in {
       
       # Define secrets for WiFi networks
       # These will be available as files in /run/secrets/
-      secrets = {
-        # Example: wifi-home-network will be available at /run/secrets/wifi-home-network
-        # Add your specific networks here or generate them dynamically
-      };
+      secrets = lib.mkMerge [
+        # Create a secret for each network defined in the networks option
+        (lib.listToAttrs (map (network: {
+          name = "wifi-${network}";
+          value = {
+            sopsFile = cfg.secretsFile;
+            key = "wifi_networks/${network}";
+          };
+        }) cfg.networks))
+      ];
     };
 
     # Note: WiFi configuration with NetworkManager
