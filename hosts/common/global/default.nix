@@ -1,4 +1,7 @@
 {
+  pkgs,
+  ...
+}: {
   imports = [
     ./audio.nix
     ./boot.nix
@@ -9,5 +12,9 @@
     ./nix-settings.nix
     ./openssh.nix
     ./printing.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    
   ];
 }

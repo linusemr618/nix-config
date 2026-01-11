@@ -1,11 +1,4 @@
 {
-#  inputs,
-#  ...
-#}: {
-  #imports = [
-  #  inputs.home-manager.nixosModules.home-manager
-  #];
-  
   users.users = {
     linus = {
       description = "Linus Emmerich";
@@ -17,13 +10,4 @@
       extraGroups = [ "wheel" "networkmanager" ];
     };
   };
-  
-  #home-manager = {
-  #  extraSpecialArgs = { inherit inputs; };
-  #  users.linus = {
-  #    imports = [
-  #      ../../../../home/linus
-  #    ];
-  #  };
-  #};
 }

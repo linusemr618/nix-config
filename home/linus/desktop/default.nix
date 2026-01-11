@@ -1,6 +1,15 @@
 {
+  pkgs,
+  ...
+}: {
   imports = [
     ./brave.nix
-    ./packages.nix
+    ./vscode.nix
+  ];
+
+  home.packages = with pkgs; [
+    gnome-boxes
+    jetbrains.pycharm
+    python3
   ];
 }
