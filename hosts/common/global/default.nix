@@ -6,10 +6,11 @@
     ./audio.nix
     ./boot.nix
     ./gnome.nix
+    ./home-manager.nix
     ./kernel.nix
     ./locale.nix
     ./networking.nix
-    ./nix-settings.nix
+    ./nix.nix
     ./openssh.nix
     ./printing.nix
   ];

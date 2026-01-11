@@ -10,6 +10,8 @@
   home.packages = with pkgs; [
     gnome-boxes
     jetbrains.pycharm
-    python3
+    proton-pass
+    protonmail-desktop
+    vlc
   ];
 }

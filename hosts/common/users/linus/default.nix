@@ -10,4 +10,5 @@
       extraGroups = [ "wheel" "networkmanager" ];
     };
   };
+  home-manager.users.linus = import ../../../../home/linus;
 }
