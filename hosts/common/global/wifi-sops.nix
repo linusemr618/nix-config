@@ -26,7 +26,9 @@ in {
       example = ["home_network" "work_network"];
       description = ''
         List of WiFi network names (as defined in the secrets file under wifi_networks).
-        Secrets will be created for each network at /run/secrets/wifi-<network-name>
+        Secrets will be created for each network at /run/secrets/wifi-<network_name>
+        where <network_name> is exactly as listed here (e.g., "home_network" becomes 
+        "/run/secrets/wifi-home_network").
       '';
     };
   };

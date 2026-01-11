@@ -106,7 +106,7 @@ networking.wireless.sops = {
 };
 ```
 
-This will create secrets at `/run/secrets/wifi-home-network` and `/run/secrets/wifi-work-network` that you can use to configure your WiFi connections.
+This will create secrets at `/run/secrets/wifi-home_network` and `/run/secrets/wifi-work_network` that you can use to configure your WiFi connections.
 
 ### Option 1: Manual Configuration with NetworkManager
 
@@ -118,15 +118,16 @@ ls /run/secrets/
 
 # Connect to a WiFi network using a secret
 # Replace "MyHomeNetwork" with your actual SSID
+# Note: The secret name uses underscores matching your network name in the config
 sudo nmcli connection add type wifi con-name "MyHomeNetwork" \
   ifname wlan0 ssid "MyHomeNetwork" \
   wifi-sec.key-mgmt wpa-psk \
-  wifi-sec.psk "$(sudo cat /run/secrets/wifi-home-network)"
+  wifi-sec.psk "$(sudo cat /run/secrets/wifi-home_network)"
 ```
 
 ### Option 2: Automated Configuration with a Systemd Service
 
-You can extend the placeholder systemd service in `wifi-sops.nix` to automatically configure WiFi networks on boot. This is useful for headless systems or automated deployments.
+You can create a custom systemd service to automatically configure WiFi networks on boot. See the commented example in `wifi-sops.nix` for a starting point. This is useful for headless systems or automated deployments.
 
 ### Option 3: wpa_supplicant
 

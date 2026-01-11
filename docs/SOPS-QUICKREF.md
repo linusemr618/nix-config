@@ -53,25 +53,22 @@ sudo nixos-rebuild switch --flake .#nix-e15411
 
 ## Using the Secrets
 
-After rebuild, secrets are available at `/run/secrets/wifi-<network-name>`:
+After rebuild, secrets are available at `/run/secrets/wifi-<network_name>` (using underscores as in your network names):
 
 ```bash
 # List secrets
 ls /run/secrets/
 
-# Add WiFi connection
+# Add WiFi connection (assuming network "home_network" in your config)
 sudo nmcli connection add type wifi con-name "Home" \
   ifname wlan0 ssid "Home-SSID" \
   wifi-sec.key-mgmt wpa-psk \
-  wifi-sec.psk "$(sudo cat /run/secrets/wifi-home-network)"
+  wifi-sec.psk "$(sudo cat /run/secrets/wifi-home_network)"
 ```
 
 ## Troubleshooting
 
 ```bash
-# Check if SOPS module is loaded
-systemctl status configure-wifi-from-sops.service
-
 # Check if secrets are decrypted
 ls -l /run/secrets/
 
