@@ -8,3 +8,4 @@ My personal NixOS configuration
   - [ ] Brave
 - [ ] dconf
 - [ ] impermanence
+- [ ] disko
