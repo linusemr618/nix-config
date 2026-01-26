@@ -7,7 +7,6 @@
   ];
 
   home.packages = with pkgs; [
-    geogebra6
     protonmail-desktop
   ];
 }
