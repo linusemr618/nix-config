@@ -3,11 +3,10 @@
   ...
 }: {
   imports = [
-    ./brave.nix
+    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
-    geogebra6
-    protonmail-desktop
+    jetbrains.pycharm
   ];
 }

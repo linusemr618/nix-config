@@ -3,16 +3,12 @@
   ...
 }: {
   imports = [
-    ./gnome
+    
   ];
 
   home.packages = with pkgs; [
-    geogebra6
+    dconf-editor
     gnome-boxes
-    jetbrains.pycharm
-    makemkv
     proton-pass
-    protonmail-desktop
-    vlc
   ];
 }

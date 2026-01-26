@@ -38,7 +38,7 @@
     homeManagerModules = import ./modules/home-manager;
 
     nixosConfigurations = {
-      "nix-e15411" = nixpkgs.lib.nixosSystem {
+      "e15411-nixos" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [ ./hosts/e15411-nixos ];
       };

@@ -1,10 +1,14 @@
 {
+  pkgs,
+  ...
+}: {
   imports = [
     ../features/cli
-    ../features/desktop
-    ../features/development
+    ../features/desktop/gnome
+    ../features/dev
     ../features/media
     ../features/productivity
+    ../features/utils
 
     #./nix.nix
   ];
@@ -14,7 +18,10 @@
     homeDirectory = "/home/linus";
   };
 
-  systemd.user.startServices = "sd-switch";
+  home.packages = with pkgs; [
 
+  ];
+
+  systemd.user.startServices = "sd-switch";
   home.stateVersion = "25.11";
 }
