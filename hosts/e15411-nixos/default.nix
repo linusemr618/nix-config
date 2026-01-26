@@ -5,12 +5,11 @@
     ../common/users/linus
   ];
   
-  networking.hostName = "nix-e15411";
+  networking.hostName = "e15411-nixos";
 
-  boot.kernelParams = [
-    "acpi_osi=!"
-    "acpi_osi=\"WWindows 2022\""
-  ];
+  #boot.kernelParams = [
+  #  "acpi_osi=\"Windows 2015\""
+  #];
   
   system.stateVersion = "25.11";
 }

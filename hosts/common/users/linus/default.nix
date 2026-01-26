@@ -1,4 +1,7 @@
 {
+  config,
+  ...
+}: {
   users.users = {
     linus = {
       description = "Linus Emmerich";
@@ -10,5 +13,5 @@
       extraGroups = [ "wheel" "networkmanager" ];
     };
   };
-  home-manager.users.linus = import ../../../../home/linus;
+  home-manager.users.linus = import ../../../../home/linus/${config.networking.hostName};
 }

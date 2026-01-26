@@ -1,7 +1,10 @@
 {
   imports = [
-    ./cli
-    ./desktop
+    ../features/cli
+    ../features/desktop
+    ../features/development
+    ../features/media
+    ../features/productivity
 
     #./nix.nix
   ];

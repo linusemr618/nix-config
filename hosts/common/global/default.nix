@@ -13,6 +13,7 @@
     ./nix.nix
     ./openssh.nix
     ./printing.nix
+    ./scsi.nix
   ];
 
   environment.systemPackages = with pkgs; [
