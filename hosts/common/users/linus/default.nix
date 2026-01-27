@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{ config, ... }: {
   users.users = {
     linus = {
       description = "Linus Emmerich";

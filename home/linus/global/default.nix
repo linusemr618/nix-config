@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   imports = [
     ../features/cli
     ../features/desktop/gnome
