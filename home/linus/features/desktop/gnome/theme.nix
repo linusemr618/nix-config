@@ -6,7 +6,11 @@
   gtk = {
     enable = true;
 
-    theme = {
+    gtk2.theme = {
+      name = "adw-gtk3";
+      package = pkgs.adw-gtk3;
+    };
+    gtk3.theme = {
       name = "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
@@ -18,5 +22,11 @@
 
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "adwaita";
+    style.name = "adwaita-dark";
   };
 }

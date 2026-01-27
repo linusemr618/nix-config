@@ -4,6 +4,7 @@
     
     ./dash-folders.nix
     ./extensions.nix
+    ./settings.nix
     ./theme.nix
   ];
 

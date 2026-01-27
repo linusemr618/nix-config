@@ -6,6 +6,6 @@ My personal NixOS configuration
 - [ ] devShell
 - [ ] dotfiles
   - [ ] Brave
-- [ ] dconf
+- [x] dconf
 - [ ] impermanence
 - [ ] disko
