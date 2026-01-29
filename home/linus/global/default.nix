@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{
+  outputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ../features/cli
     ../features/desktop/gnome
@@ -8,7 +12,8 @@
     ../features/utils
 
     #./nix.nix
-  ];
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
     username = "linus";

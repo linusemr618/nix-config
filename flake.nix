@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default-linux";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -19,27 +20,30 @@
   outputs = {
     self,
     nixpkgs,
+    systems,
     home-manager,
     ...
   } @ inputs: let
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+    inherit (self) outputs;
+    lib = nixpkgs.lib // home-manager.lib;
+    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );
   in {
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    overlays = import ./overlays { inherit inputs; };
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
+    overlays = import ./overlays { inherit inputs outputs; };
+    packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+    formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
-      "e15411-nixos" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+      "e15411-nixos" = lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
         modules = [ ./hosts/e15411-nixos ];
       };
     };
