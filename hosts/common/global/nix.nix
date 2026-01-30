@@ -4,7 +4,9 @@
   outputs,
   lib,
   ...
-}: {
+}: let
+  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+in {
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
@@ -12,24 +14,24 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
+  nix = {
     settings = {
       experimental-features = "nix-command flakes";
       flake-registry = "";
       nix-path = config.nix.nixPath;
+      auto-optimise-store = true;
       warn-dirty = false;
     };
 
-    channel.enable = false;
     gc = {
       automatic = true;
       dates = "daily";
       options = "--delete-older-than 7d";
+      persistent = true;
     };
 
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    channel.enable = false;
+    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 }
