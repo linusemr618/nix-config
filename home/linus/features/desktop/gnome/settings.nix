@@ -7,6 +7,7 @@
     "org/gnome/desktop/privacy".remove-old-temp-files = true;
     "org/gnome/settings-daemon/plugins/color".night-light-enabled = true;
     "org/gnome/settings-daemon/plugins/color".night-light-schedule-automatic = true;
+    "org/gnome/settings-daemon/plugins/color".night-light-temperature = lib.hm.gvariant.mkUint32 3700;
     "org/gnome/system/location".enabled = true;
 
     "org/gnome/nautilus/list-view".default-zoom-level = "small";

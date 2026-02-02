@@ -11,7 +11,7 @@
     useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit inputs outputs;
-      pkgs = pkgs.unstable;
+      #pkgs = pkgs.unstable;
     };
   };
 }
