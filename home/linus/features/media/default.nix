@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     makemkv
+    spotify
     vlc
   ];
 }

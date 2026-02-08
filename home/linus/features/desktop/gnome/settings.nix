@@ -2,6 +2,7 @@
   dconf.settings = {
     "org/gnome/desktop/notifications".show-in-lock-screen = false;
     "org/gnome/desktop/screensaver".lock-delay = lib.hm.gvariant.mkUint32 60;
+    "org/gnome/desktop/peripherals/mouse".speed = -0.75;
     "org/gnome/desktop/privacy".recent-files-max-age = 30;
     "org/gnome/desktop/privacy".remove-old-trash-files = true;
     "org/gnome/desktop/privacy".remove-old-temp-files = true;

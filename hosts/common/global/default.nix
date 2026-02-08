@@ -16,10 +16,11 @@
     ./openssh.nix
     ./printing.nix
     ./scsi.nix
+    ./virtualisation.nix
   ]
   ++ (builtins.attrValues outputs.nixosModules);
 
   environment.systemPackages = with pkgs; [
-    
+    gparted-full
   ];
 }

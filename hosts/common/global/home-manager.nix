@@ -1,7 +1,7 @@
 {
   inputs,
   outputs,
-  pkgs,
+  #pkgs,
   ...
 }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
