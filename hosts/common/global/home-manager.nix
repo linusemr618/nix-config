@@ -1,16 +1,11 @@
-{
-  inputs,
-  outputs,
-  #pkgs,
-  ...
-}: {
+{ inputs, ... }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     backupFileExtension = "backup";
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
-      inherit inputs outputs;
+      inherit inputs;
       #pkgs = pkgs.unstable;
     };
   };

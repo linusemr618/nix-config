@@ -1,11 +1,10 @@
 {
-  outputs,
+  inputs,
   pkgs, 
   ...
 }: {
   imports = [
     ./audio.nix
-    ./boot.nix
     ./gnome.nix
     ./home-manager.nix
     ./kernel.nix
@@ -16,9 +15,10 @@
     ./openssh.nix
     ./printing.nix
     ./scsi.nix
+    ./systemd-boot.nix
     ./virtualisation.nix
   ]
-  ++ (builtins.attrValues outputs.nixosModules);
+  ++ (builtins.attrValues inputs.self.nixosModules);
 
   environment.systemPackages = with pkgs; [
     gparted-full

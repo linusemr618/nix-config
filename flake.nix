@@ -1,13 +1,13 @@
 {
-  description = "My NixOS configuration";
+  description = "My Nix configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    systems.url = "github:nix-systems/default-linux";
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
-      url = "github:nix-community/home-manager";#/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -20,30 +20,25 @@
   outputs = {
     self,
     nixpkgs,
-    systems,
-    home-manager,
+    flake-utils,
     ...
-  } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
-    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs (import systems) (
-      system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-    );
+  } @ inputs: flake-utils.lib.eachDefaultSystem (system: let
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
+    packages = import ./pkgs { inherit pkgs; };
+    devShells = import ./shell.nix { inherit pkgs; };
+    formatter = pkgs.alejandra;
+  }) // {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    overlays = import ./overlays { inherit inputs outputs; };
-    packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
-
+    overlays = import ./overlays { inherit inputs; };
+    
     nixosConfigurations = {
-      "e15411-nixos" = lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
+      "e15411-nixos" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         modules = [ ./hosts/e15411-nixos ];
       };
     };

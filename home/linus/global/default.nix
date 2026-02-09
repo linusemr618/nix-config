@@ -1,5 +1,5 @@
 {
-  outputs,
+  inputs,
   pkgs,
   ...
 }: {
@@ -13,7 +13,7 @@
 
     #./nix.nix
   ]
-  ++ (builtins.attrValues outputs.homeManagerModules);
+  ++ (builtins.attrValues inputs.self.homeManagerModules);
 
   home = {
     username = "linus";

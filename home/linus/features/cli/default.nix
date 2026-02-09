@@ -7,6 +7,6 @@
 
   home.packages = with pkgs; [
     android-tools
-    openconnect
+    devenv
   ];
 }
