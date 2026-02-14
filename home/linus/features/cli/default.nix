@@ -92,7 +92,8 @@
     enableZshIntegration = true;
   };
 
-  # Shell aliases
+  # Shell aliases (also defined in Fish for Fish-specific features)
+  # These work across all shells (bash, zsh, fish)
   home.shellAliases = {
     # Modern replacements
     cat = "bat";
@@ -108,21 +109,5 @@
     df = "duf";
     du = "dust";
     ps = "procs";
-    
-    # Git shortcuts
-    g = "git";
-    gs = "git status";
-    ga = "git add";
-    gc = "git commit";
-    gp = "git push";
-    gl = "git pull";
-    gd = "git diff";
-    gco = "git checkout";
-    
-    # NixOS shortcuts
-    nr = "sudo nixos-rebuild switch --flake .";
-    hm = "home-manager switch --flake .";
-    nfu = "nix flake update";
-    nfc = "nix flake check";
   };
 }

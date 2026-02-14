@@ -21,13 +21,17 @@ in {
   programs.gnome-shell.extensions = map (i: { package = i; }) extensions;
 
   dconf.settings = {
-    # Caffeine settings
+    # Caffeine settings - productivity focused
     "org/gnome/shell/extensions/caffeine" = {
-      enable-fullscreen = true;
-      restore-state = true;
+      enable-fullscreen = true;  # Auto-enable when fullscreen
+      restore-state = true;       # Remember state across sessions
       show-indicator = "always";
       show-notifications = false;
       toggle-shortcut = [ "<Super>c" ];
+      # Note: Removed MPRIS and nightlight-control as they can interfere
+      # with intended behavior. If needed, re-enable with:
+      # enable-mpris = true;
+      # nightlight-control = "always";
     };
     
     # Dash to Dock settings

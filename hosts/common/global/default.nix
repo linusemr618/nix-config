@@ -16,6 +16,7 @@
     ./nix.nix
     ./nix-ld.nix
     ./openssh.nix
+    ./performance.nix
     ./printing.nix
     ./scsi.nix
     ./security.nix
@@ -27,8 +28,8 @@
 
   # Essential system packages
   environment.systemPackages = with pkgs; [
-    gparted
-    vim  # Always have an editor
+    gparted  # Partition editor (full version with all plugins)
+    vim      # Always have an editor
     wget
     curl
   ];

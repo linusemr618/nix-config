@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+  # Note: NixOS's home-manager doesn't have a dedicated Brave module,
+  # so we use the Chromium module with Brave as the package.
+  # This is the recommended approach from the home-manager documentation.
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
@@ -18,7 +21,7 @@
       # Privacy
       "--disable-features=OptimizationHints"
       
-      # Wayland support
+      # Wayland support (better for GNOME on Wayland)
       "--ozone-platform-hint=auto"
       "--enable-features=WaylandWindowDecorations"
     ];

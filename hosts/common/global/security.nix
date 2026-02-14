@@ -25,7 +25,7 @@
     # allowUserNamespaces = false;
   };
   
-  # Boot security
+  # Boot security - kernel parameters
   boot.kernel.sysctl = {
     # IP forwarding
     "net.ipv4.ip_forward" = 0;
@@ -55,9 +55,5 @@
     "kernel.kptr_restrict" = 2;
     "kernel.unprivileged_bpf_disabled" = 1;
     "kernel.unprivileged_userns_clone" = 0;
-    
-    # Virtual memory hardening
-    "vm.swappiness" = 10;  # Prefer RAM over swap
-    "vm.vfs_cache_pressure" = 50;
   };
 }

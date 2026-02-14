@@ -2,6 +2,7 @@
   programs.fish = {
     enable = true;
     
+    # Fish abbreviations (these expand as you type, better than aliases for Fish)
     shellAbbrs = {
       # Git
       g = "git";
