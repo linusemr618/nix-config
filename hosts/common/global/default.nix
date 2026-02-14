@@ -7,6 +7,7 @@
     ./audio.nix
     ./environment.nix
     ./fish.nix
+    ./fonts.nix
     ./gnome.nix
     ./home-manager.nix
     ./kernel.nix
@@ -17,6 +18,7 @@
     ./openssh.nix
     ./printing.nix
     ./scsi.nix
+    ./security.nix
     ./systemd-boot.nix
     ./virtualisation.nix
     ./zram.nix
