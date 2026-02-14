@@ -1,11 +1,26 @@
-{
-  programs.brave = {
+{ pkgs, ... }: {
+  programs.chromium = {
     enable = true;
-    #defaultSearchProviderEnabled = true;
-    #defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}&t=brave";
-    #defaultSearchProviderSuggestURL = "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list";
+    package = pkgs.brave;
+    
     extensions = [
-      "ghmbeldphafepmbegfdlkpapadhbakde"  # Proton Pass
+      { id = "ghmbeldphafepmbegfdlkpapadhbakde"; }  # Proton Pass
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }  # uBlock Origin
+      { id = "nngceckbapebfimnlniiiahkandclblb"; }  # Bitwarden (backup)
+    ];
+    
+    commandLineArgs = [
+      # Performance
+      "--enable-gpu-rasterization"
+      "--enable-zero-copy"
+      "--ignore-gpu-blocklist"
+      
+      # Privacy
+      "--disable-features=OptimizationHints"
+      
+      # Wayland support
+      "--ozone-platform-hint=auto"
+      "--enable-features=WaylandWindowDecorations"
     ];
   };
 }
