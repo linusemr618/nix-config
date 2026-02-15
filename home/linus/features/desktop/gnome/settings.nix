@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   dconf.settings = {
     "org/gnome/desktop/notifications".show-in-lock-screen = false;
     "org/gnome/desktop/peripherals/mouse".speed = -0.75;
@@ -13,7 +13,7 @@
       night-light-schedule-automatic = true;
       night-light-temperature = lib.hm.gvariant.mkUint32 3700;
     };
-    "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+    "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
       command = "kgx";

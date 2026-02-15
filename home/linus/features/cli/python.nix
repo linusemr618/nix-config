@@ -1,7 +1,8 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    (python3.withPackages (p: with p; [
-      tkinter
-    ]))
+    (python3.withPackages (p:
+      with p; [
+        tkinter
+      ]))
   ];
 }

@@ -3,17 +3,18 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../features/cli
-    ../features/desktop/gnome
-    ../features/dev
-    ../features/media
-    ../features/productivity
-    ../features/utils
+  imports =
+    [
+      ../features/cli
+      ../features/desktop/gnome
+      ../features/dev
+      ../features/media
+      ../features/productivity
+      ../features/utils
 
-    #./nix.nix
-  ]
-  ++ (builtins.attrValues inputs.self.homeManagerModules);
+      #./nix.nix
+    ]
+    ++ (builtins.attrValues inputs.self.homeManagerModules);
 
   home = {
     username = "linus";
@@ -21,7 +22,6 @@
   };
 
   home.packages = with pkgs; [
-
   ];
 
   systemd.user.startServices = "sd-switch";

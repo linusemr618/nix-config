@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ../common
-    
+
     ./dash-folders.nix
     ./extensions.nix
     ./settings.nix

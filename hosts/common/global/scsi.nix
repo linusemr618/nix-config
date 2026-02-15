@@ -1,3 +1,3 @@
 {
-  boot.kernelModules = [ "sg" ];
+  boot.kernelModules = ["sg"];
 }

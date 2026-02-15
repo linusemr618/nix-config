@@ -12,7 +12,7 @@ in {
       allowUnfreePredicate = _: true;
     };
   };
-  
+
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
@@ -27,9 +27,9 @@ in {
       persistent = true;
     };
 
-    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
   };
-  
+
   home.sessionVariables = {
     NIX_PATH = lib.concatStringsSep ":" (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs);
   };

@@ -1,12 +1,18 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
       set -g fish_greeting # Disable greeting
     '';
     plugins = [
-      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      {
+        name = "fzf-fish";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
+      {
+        name = "grc";
+        src = pkgs.fishPlugins.grc.src;
+      }
     ];
     shellAbbrs = {
       gu = "git pull && git add . && git commit -am 'update' && git push";

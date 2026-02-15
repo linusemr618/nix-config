@@ -23,27 +23,28 @@
     flake-utils,
     ...
   } @ inputs:
-  flake-utils.lib.eachDefaultSystem (system:
-    let
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in {
-      packages = import ./pkgs { inherit pkgs; };
-      devShells = import ./shell.nix { inherit pkgs; };
-      formatter = pkgs.alejandra;
-    }
-  ) // {
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
-    overlays = import ./overlays { inherit inputs; };
-    
-    nixosConfigurations = {
-      "e15411-nixos" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/e15411-nixos ];
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      in {
+        packages = import ./pkgs {inherit pkgs;};
+        devShells = import ./shell.nix {inherit pkgs;};
+        formatter = pkgs.alejandra;
+      }
+    )
+    // {
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+      overlays = import ./overlays {inherit inputs;};
+
+      nixosConfigurations = {
+        "e15411-nixos" = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [./hosts/e15411-nixos];
+        };
       };
     };
-  };
 }
