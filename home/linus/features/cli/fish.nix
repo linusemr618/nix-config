@@ -9,7 +9,7 @@
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
     ];
     shellAbbrs = {
-      gcp = "git add . && git commit -am 'update' && git push";
+      gu = "git pull && git add . && git commit -am 'update' && git push";
       nfu = "nix flake update";
       nrs = "git add . && sudo nixos-rebuild switch --flake .";
       update = "nix flake update && git add . && sudo nixos-rebuild switch --flake .";
