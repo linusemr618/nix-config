@@ -22,7 +22,9 @@
     nixpkgs,
     flake-utils,
     ...
-  } @ inputs: flake-utils.lib.eachDefaultSystem (system: let
+  } @ inputs:
+  flake-utils.lib.eachDefaultSystem (system:
+  let
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;

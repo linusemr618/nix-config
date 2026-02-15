@@ -3,7 +3,7 @@ My personal NixOS configuration
 
 ## To-Dos:
 - [ ] sops-nix
-- [ ] hibernation support
+- [x] hibernation support
 - [ ] devShell
 - [ ] dotfiles
   - [ ] Brave
