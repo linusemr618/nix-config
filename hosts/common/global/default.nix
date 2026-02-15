@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./audio.nix
+    ./fish.nix
     ./gnome.nix
     ./home-manager.nix
     ./kernel.nix
