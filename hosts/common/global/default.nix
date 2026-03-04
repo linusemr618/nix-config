@@ -23,6 +23,7 @@
     ++ (builtins.attrValues inputs.self.nixosModules);
 
   environment.systemPackages = with pkgs; [
+    aircrack-ng
     gparted-full
   ];
 }

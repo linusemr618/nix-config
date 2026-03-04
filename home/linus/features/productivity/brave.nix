@@ -6,6 +6,7 @@
     #defaultSearchProviderSuggestURL = "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list";
     extensions = [
       "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
+      "lmjnegcaeklhafolokijcfjliaokphfk" # Video DownloadHelper
     ];
   };
 }

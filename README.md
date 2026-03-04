@@ -4,9 +4,9 @@ My personal NixOS configuration
 ## To-Dos:
 - [ ] sops-nix
 - [x] hibernation support
-- [ ] devShell
+- [x] devShell
 - [ ] dotfiles
-  - [ ] Brave
+  - [x] Brave
 - [x] dconf
 - [ ] impermanence
-- [ ] disko
+- [x] disko

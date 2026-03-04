@@ -14,11 +14,12 @@
         src = pkgs.fishPlugins.grc.src;
       }
     ];
-    shellAbbrs = {
+    functions = {
       gu = "git pull && git add . && git commit -am 'update' && git push";
-      nfu = "nix flake update";
-      nrs = "git add . && sudo nixos-rebuild switch --flake .";
-      update = "nix flake update && git add . && sudo nixos-rebuild switch --flake .";
+      nfu = "pushd ~/nix-config && nix flake update && popd";
+      nrs = "pushd ~/nix-config && git add . && sudo nixos-rebuild switch --flake . && popd";
+      run = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#$argv";
+      update = "nfu && nrs";
     };
   };
 

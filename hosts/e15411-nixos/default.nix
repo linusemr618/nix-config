@@ -1,6 +1,9 @@
 {
   imports = [
+    #./dsdt.nix
+    ./graphics.nix
     ./hardware-configuration.nix
+    #./osi.nix
     ../common/global
     ../common/users/linus
   ];

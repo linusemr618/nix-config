@@ -10,15 +10,20 @@ in {
     overlays = builtins.attrValues inputs.self.overlays;
     config = {
       allowUnfree = true;
+      allowUnfreePredicate = _: true;
     };
   };
 
   nix = {
     settings = {
+      auto-optimise-store = true;
       experimental-features = "nix-command flakes";
       flake-registry = "";
       nix-path = config.nix.nixPath;
-      auto-optimise-store = true;
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       warn-dirty = false;
     };
 
