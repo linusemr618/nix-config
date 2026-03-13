@@ -6,6 +6,7 @@
   imports =
     [
       ./audio.nix
+      ./firmware.nix
       ./fish.nix
       ./gnome.nix
       ./home-manager.nix
@@ -13,10 +14,8 @@
       ./locale.nix
       ./networking.nix
       ./nix.nix
-      ./nix-ld.nix
       ./openssh.nix
       ./printing.nix
-      ./scsi.nix
       ./systemd-boot.nix
       ./virtualisation.nix
     ]
@@ -24,6 +23,6 @@
 
   environment.systemPackages = with pkgs; [
     aircrack-ng
-    gparted-full
+    gparted
   ];
 }

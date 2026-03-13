@@ -19,6 +19,7 @@
       nfu = "pushd ~/nix-config && nix flake update && popd";
       nrs = "pushd ~/nix-config && git add . && sudo nixos-rebuild switch --flake . && popd";
       run = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#$argv";
+      shell = "NIXPKGS_ALLOW_UNFREE=1 nix shell --impure (printf 'nixpkgs#%s' $argv) -c fish";
       update = "nfu && nrs";
     };
   };

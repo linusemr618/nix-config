@@ -5,12 +5,9 @@
 }: {
   imports =
     [
+      ../features/apps
       ../features/cli
       ../features/desktop/gnome
-      ../features/dev
-      ../features/media
-      ../features/productivity
-      ../features/utils
 
       #./nix.nix
     ]
