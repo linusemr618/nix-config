@@ -3,10 +3,16 @@ My personal NixOS configuration
 
 ## To-Dos:
 - [ ] sops-nix
-- [x] hibernation support
+  - [ ] email
+  - [ ] seahorse integration
+  - [ ] wifi passwords
+  - [ ] kde connect
 - [x] devShell
 - [ ] dotfiles
   - [x] Brave
-- [x] dconf
+  - [ ] vscode
+- [ ] dconf
+  - [ ] hibernation button
+  - [ ] experimental features gnome
 - [ ] impermanence
 - [x] disko
