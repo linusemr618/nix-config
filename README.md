@@ -15,4 +15,5 @@ My personal NixOS configuration
   - [ ] hibernation button
   - [ ] experimental features gnome
 - [ ] impermanence
+- [ ] switch to niri
 - [x] disko
