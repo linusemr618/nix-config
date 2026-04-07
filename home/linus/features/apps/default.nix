@@ -5,9 +5,8 @@
   ];
 
   home.packages = with pkgs; [
-    discord
     jetbrains.pycharm
-    makemkv
+    picard
     plex-desktop
     proton-pass
     protonmail-desktop

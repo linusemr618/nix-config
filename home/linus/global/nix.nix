@@ -15,7 +15,11 @@ in {
 
   nix = {
     settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
       flake-registry = "";
       warn-dirty = false;
     };

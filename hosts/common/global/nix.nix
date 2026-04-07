@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -17,7 +18,11 @@ in {
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
       flake-registry = "";
       nix-path = config.nix.nixPath;
       trusted-users = [
@@ -40,4 +45,10 @@ in {
   };
 
   programs.nix-ld.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    alejandra
+    nixfmt
+    nixd
+  ];
 }

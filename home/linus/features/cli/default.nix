@@ -4,11 +4,12 @@
     ./fish.nix
     ./git.nix
     ./neovim.nix
-    #./python.nix
+    ./python.nix
+    ./tmux.nix
   ];
 
   home.packages = with pkgs; [
-    alejandra
+    #alejandra
     android-tools
     devenv
   ];

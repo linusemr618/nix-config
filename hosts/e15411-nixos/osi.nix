@@ -1,6 +1,6 @@
-  {
-    boot.kernelParams = [
-      "acpi_osi=!"
-      "acpi_osi=\"Windows 2015\""
-    ];
-  }
+{
+  boot.kernelParams = [
+    "acpi_osi=!"
+    "acpi_osi=\"Windows 2015\""
+  ];
+}
