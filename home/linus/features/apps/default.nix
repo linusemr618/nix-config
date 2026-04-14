@@ -6,6 +6,7 @@
 
   home.packages = with pkgs; [
     jetbrains.pycharm
+    musescore
     picard
     plex-desktop
     proton-pass

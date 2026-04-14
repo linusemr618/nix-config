@@ -12,5 +12,6 @@
     #alejandra
     android-tools
     devenv
+    gcc
   ];
 }
