@@ -1,8 +1,0 @@
-{
-  imports = [
-    ../global
-  ];
-
-  dconf.settings = {
-  };
-}
