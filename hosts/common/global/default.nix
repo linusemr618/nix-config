@@ -14,6 +14,7 @@
       ./locale.nix
       ./networking.nix
       ./nix.nix
+      ./ollama.nix
       ./openssh.nix
       ./printing.nix
       ./systemd-boot.nix

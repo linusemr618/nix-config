@@ -9,6 +9,7 @@
       };
       init.defaultBranch = "main";
       pull.rebase = "false";
+      core.autocrlf = "input";
     };
   };
 }
