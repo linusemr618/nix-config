@@ -3,7 +3,7 @@
     users.users.linus = {
       isNormalUser = true;
       description = "Linus Emmerich";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "libvirtd"];
     };
   };
 

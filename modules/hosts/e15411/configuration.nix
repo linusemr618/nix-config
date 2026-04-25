@@ -90,5 +90,31 @@
     services.xserver.videoDrivers = ["modesetting"];
     environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Optionally, set the environment variable
     boot.kernelParams = ["i915.enable_guc=3"];
+
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    services.printing = {
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+      ];
+    };
+
+    networking.networkmanager = {
+      plugins = with pkgs; [
+        networkmanager-openconnect
+      ];
+    };
+
+    services.xserver.xkb = {
+      layout = "de";
+      variant = "";
+    };
+
+    programs.nix-ld.enable = true;
   };
 }
