@@ -8,12 +8,12 @@ My personal NixOS configuration
   - [ ] wifi passwords
   - [ ] kde connect
 - [x] devShell
-- [ ] dotfiles
+- [x] dotfiles
   - [x] Brave
-  - [ ] vscode
-- [ ] dconf
-  - [ ] hibernation button
-  - [ ] experimental features gnome
+  - [x] vscode
+- [x] dconf
+  - [x] hibernation button
+  - [x] experimental features gnome
 - [ ] impermanence
 - [ ] switch to niri
 - [x] disko

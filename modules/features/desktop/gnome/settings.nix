@@ -11,6 +11,7 @@
         remove-old-trash-files = true;
       };
       "org/gnome/desktop/screensaver".lock-delay = lib.hm.gvariant.mkUint32 60;
+      "org/gnome/mutter/experimental-features" = ["scale-monitor-framebuffer" "kms-modifiers" "autoclose-xwayland" "variable-refresh-rate" "xwayland-native-scaling"];
       "org/gnome/settings-daemon/plugins/color" = {
         night-light-enabled = true;
         night-light-schedule-automatic = true;
@@ -22,6 +23,7 @@
         command = "kgx";
         name = "Launch Console";
       };
+      "org/gnome/settings-daemon/plugins/power".power-button-action = "hibernate";
       "org/gnome/system/location".enabled = true;
 
       "org/gnome/nautilus/list-view" = {

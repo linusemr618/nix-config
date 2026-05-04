@@ -7,4 +7,8 @@
       useGlobalPkgs = true;
     };
   };
+
+  flake.homeModules.core = {
+    systemd.user.startServices = "sd-switch";
+  };
 }
