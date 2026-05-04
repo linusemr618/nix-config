@@ -53,8 +53,7 @@
       #media-session.enable = true;
     };
     # services.xserver.libinput.enable = true;
-    nixpkgs.config.allowUnfree = true;
-    nix.settings.experimental-features = ["nix-command" "flakes"];
+
     environment.systemPackages = with pkgs; [
       vim
       wget
@@ -114,7 +113,5 @@
       layout = "de";
       variant = "";
     };
-
-    programs.nix-ld.enable = true;
   };
 }

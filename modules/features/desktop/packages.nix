@@ -8,12 +8,11 @@
   flake.homeModules.desktop = {pkgs, ...}: {
     home.packages = with pkgs; [
       dconf-editor
+      fractal
       gnome-boxes
       gnome-tweaks
       jetbrains.pycharm
-      picard
       plex-desktop
-      proton-pass
       protonmail-desktop
       spotify
       vlc

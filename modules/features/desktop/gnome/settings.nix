@@ -1,6 +1,8 @@
 {
   flake.homeModules.desktop = {lib, ...}: {
     dconf.settings = {
+      "org/gnome/desktop/calendar".show-weekdate = true;
+      "org/gnome/desktop/date-time".automatic-timezone = true;
       "org/gnome/desktop/notifications".show-in-lock-screen = false;
       "org/gnome/desktop/peripherals/mouse".speed = -0.75;
       "org/gnome/desktop/privacy" = {
