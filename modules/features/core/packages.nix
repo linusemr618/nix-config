@@ -10,6 +10,9 @@
       android-tools
       devenv
       gcc
+      git
+      vim
+      wget
 
       (python3.withPackages (ps:
         with ps; [

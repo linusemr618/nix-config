@@ -41,7 +41,6 @@
       LC_TIME = "de_DE.UTF-8";
     };
     console.keyMap = "de";
-    services.printing.enable = true;
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
@@ -53,12 +52,6 @@
       #media-session.enable = true;
     };
     # services.xserver.libinput.enable = true;
-
-    environment.systemPackages = with pkgs; [
-      vim
-      wget
-      git
-    ];
     # programs.mtr.enable = true;
     # programs.gnupg.agent = {
     #   enable = true;
@@ -71,12 +64,8 @@
 
     system.stateVersion = "26.05"; # Did you read the comment?
 
-    virtualisation.libvirtd.enable = true;
-    programs.virt-manager.enable = true;
-
     hardware.enableRedistributableFirmware = true;
     services.fwupd.enable = true;
-    boot.kernelModules = ["sg"];
 
     hardware.graphics = {
       enable = true;
@@ -89,19 +78,6 @@
     services.xserver.videoDrivers = ["modesetting"];
     environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Optionally, set the environment variable
     boot.kernelParams = ["i915.enable_guc=3"];
-
-    services.avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-
-    services.printing = {
-      drivers = with pkgs; [
-        cups-filters
-        cups-browsed
-      ];
-    };
 
     networking.networkmanager = {
       plugins = with pkgs; [
