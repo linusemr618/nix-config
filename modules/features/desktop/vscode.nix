@@ -18,6 +18,7 @@
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nixd";
           "nix.formatterPath" = "alejandra";
+          "nix.hiddenLanguageServerErrors" = ["textDocument/definition" "textDocument/formatting"];
           "nix.serverSettings" = {
             "nixd" = {
               "formatting" = {
