@@ -52,7 +52,7 @@
         gu = "git pull && git add . && git commit -m 'update $(date -u --iso-8601=seconds)' && git push";
         nfu = "pushd ~/nix-config && nix flake update && popd";
         nrs = "pushd ~/nix-config && git add . && sudo nixos-rebuild switch --flake . && popd";
-        run = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#$argv";
+        run = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#$argv[1] -- $argv[2..-1]";
         shell = "NIXPKGS_ALLOW_UNFREE=1 nix shell --impure (string replace -r '^' 'nixpkgs#' $argv) -c fish";
         update = "nfu && nrs";
       };

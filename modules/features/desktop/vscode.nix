@@ -32,9 +32,12 @@
         };
       };
     };
-    home.packages = with pkgs; [
-      alejandra
-      nixd
-    ];
+    home = {
+      file.".config/autostart/code.desktop".source = "${pkgs.vscode}/share/applications/code.desktop";
+      packages = with pkgs; [
+        alejandra
+        nixd
+      ];
+    };
   };
 }

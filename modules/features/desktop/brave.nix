@@ -1,5 +1,5 @@
 {
-  flake.homeModules.desktop = {
+  flake.homeModules.desktop = {pkgs, ...}: {
     programs.brave = {
       enable = true;
       #defaultSearchProviderEnabled = true;
@@ -7,8 +7,11 @@
       #defaultSearchProviderSuggestURL = "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list";
       extensions = [
         "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
+        "jplgfhpmjnbigmhklmmbgecoobifkmpa" # Proton VPN
         "lmjnegcaeklhafolokijcfjliaokphfk" # Video DownloadHelper
       ];
     };
+
+    home.file.".config/autostart/brave-browser.desktop".source = "${pkgs.brave}/share/applications/brave-browser.desktop";
   };
 }

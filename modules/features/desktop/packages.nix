@@ -12,6 +12,8 @@
       gnome-tweaks
       jetbrains.pycharm
       plex-desktop
+      proton-pass
+      proton-vpn
       protonmail-desktop
       spotify
       vlc
