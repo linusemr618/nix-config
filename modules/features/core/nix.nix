@@ -20,7 +20,7 @@
         trusted-users = ["root" "@wheel"];
         warn-dirty = false;
 
-        flake-registry = "";
+        #flake-registry = "";
         #nix-path = config.nix.nixPath;
       };
       registry = lib.mapAttrs (_: value: {flake = value;}) inputs;

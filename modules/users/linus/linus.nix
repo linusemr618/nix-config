@@ -1,9 +1,10 @@
 {
-  flake.nixosModules.linus = {
+  flake.nixosModules.linus = {pkgs, ...}: {
     users.users.linus = {
       isNormalUser = true;
       description = "Linus Emmerich";
       extraGroups = ["networkmanager" "wheel" "libvirtd"];
+      shell = pkgs.fish;
     };
   };
 

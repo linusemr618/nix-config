@@ -11,9 +11,11 @@ My personal NixOS configuration
 - [x] dotfiles
   - [x] Brave
   - [x] vscode
+  - [ ] use xdg
+  - [ ] use wrappers
 - [x] dconf
   - [x] hibernation button
   - [x] experimental features gnome
 - [ ] impermanence
-- [ ] switch to niri
+- [ ] switch to niri or hyprland
 - [x] disko

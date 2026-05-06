@@ -1,13 +1,18 @@
 {
   flake.homeModules.desktop = {pkgs, ...}: {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
+      package = pkgs.vscodium-fhs;
       profiles.default = {
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+
+          ms-vscode.cmake-tools
+          ms-vscode.cpptools
           ms-vscode.cpptools-extension-pack
+
           tomoki1207.pdf
         ];
         userSettings = {
