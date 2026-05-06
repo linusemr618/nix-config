@@ -39,7 +39,7 @@
       };
     };
     home = {
-      file.".config/autostart/code.desktop".source = "${pkgs.vscode}/share/applications/code.desktop";
+      file.".config/autostart/code.desktop".source = "${pkgs.vscodium-fhs}/share/applications/code.desktop";
       packages = with pkgs; [
         alejandra
         nixd

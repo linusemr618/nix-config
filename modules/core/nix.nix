@@ -1,5 +1,7 @@
 {inputs, ...}: {
   flake.nixosModules.core = {lib, ...}: {
+    imports = [inputs.nix-index-database.nixosModules.default];
+
     nixpkgs.config.allowUnfree = true;
     nix = {
       channel.enable = false;
@@ -28,5 +30,7 @@
     };
 
     programs.nix-ld.enable = true;
+
+    programs.nix-index-database.comma.enable = true;
   };
 }

@@ -7,15 +7,23 @@ My personal NixOS configuration
   - [ ] seahorse integration
   - [ ] wifi passwords
   - [ ] kde connect
-- [x] devShell
-- [x] dotfiles
-  - [x] Brave
-  - [x] vscode
-  - [ ] use xdg
-  - [ ] use wrappers
-- [x] dconf
-  - [x] hibernation button
-  - [x] experimental features gnome
+- [ ] devShell
+- [ ] use xdg
+- [ ] use wrappers
+- [ ] zed
 - [ ] impermanence
 - [ ] switch to niri or hyprland
-- [x] disko
+- [ ] docker
+- [ ] npins (vic/den)
+- [ ] disko
+
+
+
+
+
+
+
+
+
+
+
