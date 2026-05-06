@@ -16,4 +16,6 @@ My personal NixOS configuration
   - [x] experimental features gnome
 - [ ] impermanence
 - [ ] switch to niri
+- [ ] nix-index-database
+- [ ] comma
 - [x] disko
