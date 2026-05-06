@@ -12,6 +12,6 @@
       ];
     };
 
-    home.file.".config/autostart/brave-browser.desktop".source = "${pkgs.brave}/share/applications/brave-browser.desktop";
+    xdg.configFile."autostart/brave-browser.desktop".source = "${pkgs.brave}/share/applications/brave-browser.desktop";
   };
 }

@@ -1,8 +1,8 @@
 {
   flake.homeModules.desktop = {pkgs, ...}: {
-    programs.vscodium = {
+    programs.vscode = {
       enable = true;
-      package = pkgs.vscodium-fhs;
+      package = pkgs.vscode-fhs;
       profiles.default = {
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
@@ -38,12 +38,11 @@
         };
       };
     };
-    home = {
-      file.".config/autostart/code.desktop".source = "${pkgs.vscodium-fhs}/share/applications/code.desktop";
-      packages = with pkgs; [
-        alejandra
-        nixd
-      ];
-    };
+    home.packages = with pkgs; [
+      alejandra
+      nixd
+    ];
+
+    xdg.configFile."autostart/code.desktop".source = "${pkgs.vscode-fhs}/share/applications/code.desktop";
   };
 }

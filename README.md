@@ -9,21 +9,10 @@ My personal NixOS configuration
   - [ ] kde connect
 - [ ] devShell
 - [ ] use xdg
-- [ ] use wrappers
+- [x] use wrappers
 - [ ] zed
 - [ ] impermanence
 - [ ] switch to niri or hyprland
 - [ ] docker
-- [ ] npins (vic/den)
+- [x] ~~npins (vic/den)~~
 - [ ] disko
-
-
-
-
-
-
-
-
-
-
-
