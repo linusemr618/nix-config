@@ -10,7 +10,7 @@ My personal NixOS configuration
 - [ ] devShell
 - [x] use xdg
 - [ ] use wrappers
-- [ ] use nh
+- [x] use nh
 - [ ] zed
 - [ ] firewall
 - [ ] impermanence

@@ -60,12 +60,11 @@
       functions = {
         gu = "git pull && git add . && git commit -m 'update $(date -u --iso-8601=seconds)' && git push";
         nfu = "nix flake update --flake ${config.flake.location}";
-        nrs = "pushd ${config.flake.location} && git add . && sudo nixos-rebuild switch --flake . && popd";
         nhs = "nh os switch";
         nhc = "nh clean all";
         run = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#$argv[1] -- $argv[2..-1]";
         shell = "NIXPKGS_ALLOW_UNFREE=1 nix shell --impure (string replace -r '^' 'nixpkgs#' $argv) -c fish";
-        update = "nfu && nrs";
+        update = "nfu && nhs";
       };
     };
 

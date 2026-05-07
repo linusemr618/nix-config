@@ -5,7 +5,7 @@
       url = "github:nix-community/home-manager"; #/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    import-tree.url = "github:vic/import-tree";
+    import-tree.url = "github:denful/import-tree";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -21,5 +21,9 @@
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree [
+      ./flake
+      ./modules
+    ]);
 }
