@@ -1,5 +1,9 @@
 {
-  flake.nixosModules.core = {pkgs, ...}: {
+  flake.nixosModules.core = {
+    config,
+    pkgs,
+    ...
+  }: {
     programs.fish.enable = true;
     programs.bash = {
       interactiveShellInit = ''
@@ -10,6 +14,7 @@
         fi
       '';
     };
+    users.users.${config.user.name}.shell = pkgs.fish;
   };
 
   flake.homeModules.core = {pkgs, ...}: {
@@ -52,6 +57,7 @@
         gu = "git pull && git add . && git commit -m 'update $(date -u --iso-8601=seconds)' && git push";
         nfu = "pushd ~/nix-config && nix flake update && popd";
         nrs = "pushd ~/nix-config && git add . && sudo nixos-rebuild switch --flake . && popd";
+        nhs = "nh os switch";
         run = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#$argv[1] -- $argv[2..-1]";
         shell = "NIXPKGS_ALLOW_UNFREE=1 nix shell --impure (string replace -r '^' 'nixpkgs#' $argv) -c fish";
         update = "nfu && nrs";

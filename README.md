@@ -8,11 +8,13 @@ My personal NixOS configuration
   - [ ] wifi passwords
   - [ ] kde connect
 - [ ] devShell
-- [ ] use xdg
-- [x] use wrappers
+- [x] use xdg
+- [ ] use wrappers
+- [ ] use nh
 - [ ] zed
+- [ ] firewall
 - [ ] impermanence
-- [ ] switch to niri or hyprland
+- [ ] (switch to niri or hyprland)
 - [ ] docker
 - [x] ~~npins (vic/den)~~
-- [ ] disko
+- [ ] (disko)

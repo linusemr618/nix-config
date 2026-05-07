@@ -9,5 +9,13 @@
   flake.homeModules.desktop = {
     programs.gnome-shell.enable = true;
     dconf.enable = true;
+
+    xdg = {
+      enable = true;
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+      };
+    };
   };
 }
