@@ -10,7 +10,7 @@
     nix = {
       channel.enable = false;
       /*
-        gc = {
+      gc = {
         automatic = true;
         dates = "daily";
         options = "--delete-older-than 7d";
@@ -44,7 +44,7 @@
       clean.enable = true;
       clean.extraArgs = "--keep-since 7d --keep 7";
       clean.dates = "daily";
-      flake = "/home/${config.user.name}/nix-config";
+      flake = "${config.flake.location}";
     };
   };
 }
