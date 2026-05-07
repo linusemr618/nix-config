@@ -1,5 +1,9 @@
-{
-  flake.nixosModules.core = {pkgs, ...}: {
+{inputs, ...}: {
+  flake.nixosModules.core = {
+    config,
+    pkgs,
+    ...
+  }: {
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
@@ -49,6 +53,42 @@
       ];
     };
 
+    services = {
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
+      printing = {
+        enable = true;
+        drivers = with pkgs; [
+          cups-filters
+          cups-browsed
+        ];
+      };
+    };
+
+    imports = [inputs.home-manager.nixosModules.home-manager];
+    users.users.${config.user.name} = {
+      isNormalUser = true;
+      description = config.user.description;
+      extraGroups = ["networkmanager" "wheel"];
+    };
+    home-manager = {
+      backupFileExtension = "backup";
+      useUserPackages = true;
+      useGlobalPkgs = true;
+    };
+
     system.stateVersion = "26.05"; # Did you read the comment?
+  };
+
+  flake.homeModules.core = {config, ...}: {
+    home = {
+      username = config.user.name;
+      homeDirectory = "/home/${config.home.username}";
+      stateVersion = "26.05";
+    };
+    systemd.user.startServices = "sd-switch";
   };
 }
