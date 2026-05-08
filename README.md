@@ -12,10 +12,10 @@ My personal NixOS configuration
 - [ ] use wrappers
 - [x] use nh
 - [ ] zed
-- [ ] firewall
+- [x] firewall
 - [ ] impermanence
 - [ ] (switch to niri or hyprland)
-- [ ] docker
+- [x] docker
 - [x] ~~npins (vic/den)~~
 - [ ] (disko)
 - [ ] element desktop

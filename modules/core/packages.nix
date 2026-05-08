@@ -11,13 +11,10 @@
       devenv
       gcc
       git
-      vim
+      neovim
       wget
 
-      (python3.withPackages (ps:
-        with ps; [
-          tkinter
-        ]))
+      (python3.withPackages (ps: [ps.tkinter]))
     ];
   };
 }

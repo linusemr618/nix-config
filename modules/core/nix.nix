@@ -38,7 +38,6 @@
     #programs.nix-ld.enable = true;
 
     programs.nix-index-database.comma.enable = true;
-    environment.sessionVariables = {COMMA_CACHING = 0;};
 
     programs.nh = {
       enable = true;
@@ -48,4 +47,6 @@
       flake = "${config.flake.location}";
     };
   };
+
+  flake.homeModules.core = {home.sessionVariables = {COMMA_CACHING = 0;};};
 }
