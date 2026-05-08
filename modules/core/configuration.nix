@@ -23,34 +23,31 @@
       variant = "";
     };
 
-    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      #jack.enable = true;
-      #media-session.enable = true;
     };
 
-    # services.xserver.libinput.enable = true;
-    # programs.mtr.enable = true;
     # programs.gnupg.agent = {
     #   enable = true;
     #   enableSSHSupport = true;
     # };
     # services.openssh.enable = true;
 
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # networking.firewall.enable = false;
-    # networking.wireless.enable = true;
-    networking.networkmanager.enable = true;
-    networking.networkmanager = {
-      plugins = with pkgs; [
-        networkmanager-openconnect
-      ];
+    networking = {
+      firewall = {
+        allowedTCPPorts = [];
+        allowedUDPPorts = [];
+      };
+      networkmanager = {
+        enable = true;
+        plugins = with pkgs; [
+          networkmanager-openconnect
+        ];
+      };
     };
 
     services = {
@@ -80,13 +77,13 @@
       useGlobalPkgs = true;
     };
 
-    system.stateVersion = "26.05"; # Did you read the comment?
+    system.stateVersion = "26.05";
   };
 
   flake.homeModules.core = {config, ...}: {
     home = {
       username = config.user.name;
-      homeDirectory = "/home/${config.home.username}";
+      homeDirectory = "/home/${config.user.name}";
       stateVersion = "26.05";
     };
     systemd.user.startServices = "sd-switch";

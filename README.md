@@ -7,7 +7,7 @@ My personal NixOS configuration
   - [ ] seahorse integration
   - [ ] wifi passwords
   - [ ] kde connect
-- [ ] devShell
+- [x] devShell
 - [x] use xdg
 - [ ] use wrappers
 - [x] use nh
@@ -18,3 +18,5 @@ My personal NixOS configuration
 - [ ] docker
 - [x] ~~npins (vic/den)~~
 - [ ] (disko)
+- [ ] element desktop
+- [ ] tmux
