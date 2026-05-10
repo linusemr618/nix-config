@@ -4,6 +4,11 @@
     pkgs,
     ...
   }: {
+    imports = [
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.sops
+    ];
+
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
@@ -63,7 +68,6 @@
       };
     };
 
-    imports = [inputs.home-manager.nixosModules.home-manager];
     users.users.${config.user.name} = {
       isNormalUser = true;
       description = config.user.description;

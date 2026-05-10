@@ -2,7 +2,7 @@
   flake.homeModules.desktop = {pkgs, ...}: {
     programs.vscode = {
       enable = true;
-      package = pkgs.vscode-fhs;
+      package = pkgs.vscode;
       profiles.default = {
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
@@ -43,6 +43,6 @@
       nixd
     ];
 
-    xdg.configFile."autostart/code.desktop".source = "${pkgs.vscode-fhs}/share/applications/code.desktop";
+    xdg.configFile."autostart/code.desktop".source = "${pkgs.vscode}/share/applications/code.desktop";
   };
 }

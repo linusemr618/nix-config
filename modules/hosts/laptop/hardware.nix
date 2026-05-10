@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.e15411 = {
+  flake.nixosModules.hostsLaptop = {
     config,
     lib,
     #pkgs,

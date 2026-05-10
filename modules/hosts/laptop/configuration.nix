@@ -3,12 +3,12 @@
   self,
   ...
 }: {
-  flake.nixosConfigurations.e15411-nixos = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.e15411
+      self.nixosModules.hostsLaptop
     ];
   };
-  flake.nixosModules.e15411 = {
+  flake.nixosModules.hostsLaptop = {
     config,
     pkgs,
     ...
@@ -26,7 +26,7 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxPackages_latest;
-    networking.hostName = "e15411-nixos";
+    networking.hostName = "laptop";
 
     hardware.enableRedistributableFirmware = true;
     services.fwupd.enable = true;
