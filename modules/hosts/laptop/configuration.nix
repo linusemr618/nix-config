@@ -6,23 +6,21 @@
   flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.hostsLaptop
-    ];
-  };
-  flake.nixosModules.hostsLaptop = {
-    config,
-    pkgs,
-    ...
-  }: {
-    imports = [
+
       self.nixosModules.core
       self.nixosModules.desktop
-    ];
+      self.nixosModules.desktopGnome
 
-    home-manager.users.${config.user.name}.imports = [
-      self.homeModules.core
-      self.homeModules.desktop
+      ({config, ...}: {
+        home-manager.users.${config.user.name}.imports = [
+          self.homeModules.core
+          self.homeModules.desktop
+          self.homeModules.desktopGnome
+        ];
+      })
     ];
-
+  };
+  flake.nixosModules.hostsLaptop = {pkgs, ...}: {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxPackages_latest;

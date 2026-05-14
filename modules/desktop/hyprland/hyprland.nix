@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.desktop = {
+  flake.nixosModules.desktopHyprland = {
     programs.hyprland = {
       enable = true;
       withUWSM = true; # recommended for most users

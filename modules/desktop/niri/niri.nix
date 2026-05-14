@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.desktop = {pkgs, ...}: {
+  flake.nixosModules.desktopNiri = {pkgs, ...}: {
     programs.niri = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;

@@ -4,10 +4,7 @@
     pkgs,
     ...
   }: {
-    imports = [
-      inputs.home-manager.nixosModules.home-manager
-      inputs.sops-nix.nixosModules.sops
-    ];
+    imports = [inputs.home-manager.nixosModules.home-manager];
 
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";

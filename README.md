@@ -7,6 +7,7 @@ My personal NixOS configuration
   - [ ] seahorse integration
   - [ ] wifi passwords
   - [ ] kde connect
+  - [ ] backup
 - [x] devShell
 - [x] use xdg
 - [ ] use wrappers

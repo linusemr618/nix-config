@@ -1,5 +1,5 @@
 {
-  flake.homeModules.desktop = {pkgs, ...}: let
+  flake.homeModules.desktopGnome = {pkgs, ...}: let
     extensions = with pkgs.gnomeExtensions; [
       appindicator
       #blur-my-shell

@@ -1,5 +1,5 @@
 {
-  flake.homeModules.desktop = {lib, ...}:
+  flake.homeModules.desktopGnome = {lib, ...}:
     with lib.hm.gvariant; {
       dconf.settings = {
         "org/gnome/desktop/calendar".show-weekdate = true;
