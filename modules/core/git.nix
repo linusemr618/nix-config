@@ -9,7 +9,7 @@
           email = "emmerichlinus@gmail.com";
         };
         init.defaultBranch = "main";
-        pull.rebase = "true";
+        pull.rebase = "false";
         core.autocrlf = "input";
       };
     };

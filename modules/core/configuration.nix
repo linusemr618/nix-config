@@ -69,6 +69,7 @@
       isNormalUser = true;
       description = config.user.description;
       extraGroups = ["networkmanager" "wheel"];
+      linger = true;
     };
     home-manager = {
       backupFileExtension = "backup";

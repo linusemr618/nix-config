@@ -1,8 +1,8 @@
 {
-  flake.nixosModules.desktopGnome = {
+  flake.nixosModules.desktopGnome = {config, ...}: {
     services.displayManager.gdm.enable = true;
     services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = "linus";
+    services.displayManager.autoLogin.user = "${config.user.name}";
     services.desktopManager.gnome.enable = true;
   };
 
