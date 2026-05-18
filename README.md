@@ -11,7 +11,7 @@ My personal NixOS configuration
 - [x] devShell
 - [x] use xdg
 - [x] use nh
-- [ ] zed
+- [x] zed
 - [x] firewall
 - [ ] switch to niri or hyprland
 - [x] docker

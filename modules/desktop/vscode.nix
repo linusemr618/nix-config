@@ -1,22 +1,32 @@
 {inputs, ...}: {
+  flake.nixosModules.desktop = {
+    nixpkgs.overlays = [inputs.nix4vscode.overlays.default];
+  };
+
   flake.homeModules.desktop = {pkgs, ...}: {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
-      package = pkgs.vscode;
       profiles.default = {
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
-        extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
-          jnoortheen.nix-ide
-          mkhl.direnv
+        extensions =
+          pkgs.nix4vscode.forVscodeVersion pkgs.vscodium.version [
+            "jnoortheen.nix-ide"
+            "mkhl.direnv"
+            "tomoki1207.pdf"
+            "datakurre.devenv"
 
-          ms-vscode.cmake-tools
-          ms-vscode.cpptools
-          ms-vscode.cpptools-extension-pack
-
-          tomoki1207.pdf
-        ];
+            "ms-vscode.cpptools-extension-pack"
+            "ms-vscode.cpptools"
+            "ms-vscode.cpptools-themes"
+            "ms-vscode.cpp-devtools"
+            "ms-vscode.cmake-tools"
+          ]
+          ++ pkgs.nix4vscode.forVscode [
+            "github.copilot-chat.0.40.1"
+          ];
         userSettings = {
+          "chat.disableAIFeatures" = false;
           "files.autoSave" = "onFocusChange";
           "git.confirmSync" = false;
           "git.autofetch" = true;
@@ -44,18 +54,6 @@
       nixd
     ];
 
-    xdg.configFile."autostart/code.desktop".source = "${pkgs.vscode}/share/applications/code.desktop";
-  };
-
-  perSystem = {system, ...}: {
-    _module.args.pkgs = import inputs.nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-      overlays = [
-        inputs.nix-vscode-extensions.overlays.default
-      ];
-    };
+    xdg.configFile."autostart/codium.desktop".source = "${pkgs.vscodium}/share/applications/codium.desktop";
   };
 }
