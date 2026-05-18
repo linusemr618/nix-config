@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   flake.homeModules.desktop = {pkgs, ...}: {
     programs.vscode = {
       enable = true;
@@ -6,8 +6,9 @@
       profiles.default = {
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
-        extensions = with pkgs.vscode-extensions; [
+        extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
           jnoortheen.nix-ide
+          mkhl.direnv
 
           ms-vscode.cmake-tools
           ms-vscode.cpptools
@@ -44,5 +45,17 @@
     ];
 
     xdg.configFile."autostart/code.desktop".source = "${pkgs.vscode}/share/applications/code.desktop";
+  };
+
+  perSystem = {system, ...}: {
+    _module.args.pkgs = import inputs.nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        inputs.nix-vscode-extensions.overlays.default
+      ];
+    };
   };
 }

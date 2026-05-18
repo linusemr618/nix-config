@@ -4,6 +4,7 @@
     services.displayManager.autoLogin.enable = true;
     services.displayManager.autoLogin.user = "${config.user.name}";
     services.desktopManager.gnome.enable = true;
+    environment.sessionVariables.NIXOS_OZONE_WL = 1;
   };
 
   flake.homeModules.desktopGnome = {

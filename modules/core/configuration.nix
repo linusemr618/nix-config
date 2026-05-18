@@ -4,8 +4,6 @@
     pkgs,
     ...
   }: {
-    imports = [inputs.home-manager.nixosModules.home-manager];
-
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
@@ -65,27 +63,6 @@
       };
     };
 
-    users.users.${config.user.name} = {
-      isNormalUser = true;
-      description = config.user.description;
-      extraGroups = ["networkmanager" "wheel"];
-      linger = true;
-    };
-    home-manager = {
-      backupFileExtension = "backup";
-      useUserPackages = true;
-      useGlobalPkgs = true;
-    };
-
     system.stateVersion = "26.05";
-  };
-
-  flake.homeModules.core = {config, ...}: {
-    home = {
-      username = config.user.name;
-      homeDirectory = "/home/${config.user.name}";
-      stateVersion = "26.05";
-    };
-    systemd.user.startServices = "sd-switch";
   };
 }
