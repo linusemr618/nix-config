@@ -9,6 +9,7 @@
     home.packages = with pkgs; [
       dconf-editor
       fractal
+      geary
       gnome-tweaks
       jetbrains.pycharm
       plex-desktop

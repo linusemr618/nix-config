@@ -23,8 +23,6 @@
           "flakes"
           "nix-command"
         ];
-        substituters = ["https://nix-community.cachix.org"];
-        trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
         trusted-users = ["root" "@wheel"];
         warn-dirty = false;
 
@@ -42,9 +40,11 @@
 
     programs.nh = {
       enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 7d --keep 7";
-      clean.dates = "daily";
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5";
+        dates = "daily";
+      };
       flake = "${config.flake.location}";
     };
   };

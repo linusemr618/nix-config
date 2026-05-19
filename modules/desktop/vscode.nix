@@ -35,17 +35,7 @@
           "nix.serverPath" = "nixd";
           "nix.formatterPath" = "alejandra";
           "nix.hiddenLanguageServerErrors" = ["textDocument/definition" "textDocument/formatting"];
-          "nix.serverSettings" = {
-            "nixd" = {
-              "formatting" = {
-                "command" = [
-                  "alejandra"
-                ];
-              };
-            };
-          };
-          "[nix]"."editor.formatOnSave" = true;
-          "[nix]"."editor.tabSize" = 2;
+          "nix.serverSettings".nixd.formatting.command = ["alejandra"];
         };
       };
     };
@@ -54,6 +44,6 @@
       nixd
     ];
 
-    xdg.configFile."autostart/codium.desktop".source = "${pkgs.vscodium}/share/applications/codium.desktop";
+    #xdg.configFile."autostart/codium.desktop".source = "${pkgs.vscodium}/share/applications/codium.desktop";
   };
 }

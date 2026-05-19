@@ -9,13 +9,13 @@
 
       self.nixosModules.core
       self.nixosModules.desktop
-      self.nixosModules.desktopGnome
+      self.nixosModules.desktopNiri
 
       ({config, ...}: {
         home-manager.users.${config.user.name}.imports = [
           self.homeModules.core
           self.homeModules.desktop
-          self.homeModules.desktopGnome
+          self.homeModules.desktopNiri
         ];
       })
     ];

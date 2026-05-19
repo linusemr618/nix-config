@@ -6,17 +6,20 @@
   }: {
     programs = {
       niri.enable = true;
-      waybar.enable = true;
+      #waybar.enable = true;
     };
     environment = {
       sessionVariables.NIXOS_OZONE_WL = "1";
       systemPackages = with pkgs; [
-        alacritty
+        /*
+          alacritty
         fuzzel
         swaylock
         mako
         swayidle
+        */
         xwayland-satellite
+        noctalia-shell
       ];
     };
     security = {
@@ -36,8 +39,21 @@
       };
     };
     systemd.user.services.niri.enableDefaultPath = false;
+    xdg.portal.config.niri = {
+      "org.freedesktop.impl.portal.FileChooser" = ["gtk"]; # or "kde"
+    };
   };
 
-  flake.homeModules.desktopNiri = {pkgs, ...}: {
+  flake.homeModules.desktopNiri = {
+    programs.niri = {
+      enable = true;
+      settings = {
+        # Autostart your desktop shell
+        spawn-at-startup = [
+          {command = ["noctalia-shell"];}
+          {command = ["xwayland-satellite"];}
+        ];
+      };
+    };
   };
 }
