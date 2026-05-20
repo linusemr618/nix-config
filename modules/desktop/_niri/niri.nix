@@ -5,7 +5,10 @@
     ...
   }: {
     programs = {
-      niri.enable = true;
+      niri = {
+        enable = true;
+        useNautilus = true;
+      };
       #waybar.enable = true;
     };
     environment = {
@@ -19,11 +22,11 @@
         swayidle
         */
         xwayland-satellite
-        noctalia-shell
       ];
     };
+    hardware.bluetooth.enable = true;
     security = {
-      pam.services.swaylock = {};
+      pam.services.greetd.enableGnomeKeyring = true;
       polkit.enable = true;
     };
     services = {
@@ -37,6 +40,8 @@
           };
         };
       };
+      power-profiles-daemon.enable = true;
+      upower.enable = true;
     };
     systemd.user.services.niri.enableDefaultPath = false;
     xdg.portal.config.niri = {
@@ -44,16 +49,13 @@
     };
   };
 
-  flake.homeModules.desktopNiri = {
-    programs.niri = {
-      enable = true;
-      settings = {
-        # Autostart your desktop shell
-        spawn-at-startup = [
-          {command = ["noctalia-shell"];}
-          {command = ["xwayland-satellite"];}
-        ];
-      };
+  flake.homeModules.desktopNiri = {pkgs, ...}: {
+    programs = {
+      fuzzel.enable = true;
     };
+    home.packages = with pkgs; [
+      kitty
+      swayidle
+    ];
   };
 }

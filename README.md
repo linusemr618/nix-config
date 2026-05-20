@@ -19,6 +19,6 @@ My personal NixOS configuration
 - [ ] disko & impermanence
 - [ ] element desktop
 - [ ] tmux
-- [ ] Restructure graphics and enable 32bit
+- [x] Restructure graphics and enable 32bit
 - [ ] check for default gnome options
-- [ ] research firmware options
+- [x] research firmware options

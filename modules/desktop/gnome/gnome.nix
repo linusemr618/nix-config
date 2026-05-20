@@ -1,8 +1,12 @@
 {
   flake.nixosModules.desktopGnome = {config, ...}: {
-    services.displayManager.gdm.enable = true;
-    services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = "${config.user.name}";
+    services.displayManager = {
+      gdm.enable = true;
+      autoLogin = {
+        enable = true;
+        user = "${config.user.name}";
+      };
+    };
     services.desktopManager.gnome.enable = true;
     environment.sessionVariables.NIXOS_OZONE_WL = 1;
   };

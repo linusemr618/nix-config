@@ -2,6 +2,8 @@
   flake.nixosModules.core = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       aircrack-ng
+
+      #(ffmpeg-full.override {withUnfree = true;})
     ];
   };
 
@@ -11,6 +13,7 @@
       devenv
       gcc
       git
+      neovim
       wget
 
       (python3.withPackages (ps: [ps.tkinter]))

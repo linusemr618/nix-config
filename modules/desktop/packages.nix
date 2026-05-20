@@ -20,6 +20,6 @@
       vlc
     ];
 
-    xdg.configFile."autostart/proton.vpn.app.gtk.desktop".source = "${pkgs.proton-vpn}/share/applications/proton.vpn.app.gtk.desktop";
+    #xdg.configFile."autostart/proton.vpn.app.gtk.desktop".source = "${pkgs.proton-vpn}/share/applications/proton.vpn.app.gtk.desktop";
   };
 }

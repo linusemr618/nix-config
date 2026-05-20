@@ -9,9 +9,11 @@
         nixd
       ];
       defaultEditor = true;
-      mutableUserSettings = false;
+      #mutableUserSettings = false;
       userSettings = {
-        agent_servers.github-copilot-cli.type = "registry";
+        edit_predictions = {
+          provider = "ollama";
+        };
         auto_install_extensions.nix = true;
         autosave = "on_focus_change";
         base_keymap = "VSCode";
@@ -27,6 +29,7 @@
           arguments = ["--quiet" "--"];
         };
         load_direnv = "shell_hook";
+        #project_pane.dock = "right";
         telemetry = {
           diagnostics = false;
           metrics = false;
@@ -40,6 +43,6 @@
         vim_mode = false;
       };
     };
-    xdg.configFile."autostart/dev.zed.Zed.desktop".source = "${pkgs.zed-editor}/share/applications/dev.zed.Zed.desktop";
+    #xdg.configFile."autostart/dev.zed.Zed.desktop".source = "${pkgs.zed-editor}/share/applications/dev.zed.Zed.desktop";
   };
 }

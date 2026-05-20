@@ -1,5 +1,5 @@
 {
-  flake.homeModules.desktop = {pkgs, ...}: {
+  flake.homeModules.desktop = {
     programs.brave = {
       enable = true;
       #defaultSearchProviderEnabled = true;
@@ -12,6 +12,6 @@
       ];
     };
 
-    xdg.configFile."autostart/brave-browser.desktop".source = "${pkgs.brave}/share/applications/brave-browser.desktop";
+    #xdg.configFile."autostart/brave-browser.desktop".source = "${pkgs.brave}/share/applications/brave-browser.desktop";
   };
 }

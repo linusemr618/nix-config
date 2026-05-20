@@ -14,8 +14,6 @@
       initrd.availableKernelModules = [
         "xhci_pci"
         "nvme"
-        "usb_storage"
-        "sd_mod"
       ];
       initrd.kernelModules = [];
       kernelModules = ["kvm-intel"];
@@ -27,10 +25,8 @@
       fsType = "btrfs";
       options = [
         "subvol=@"
-        "compress=zstd:1"
-        "discard=async"
+        "compress=zstd"
         "noatime"
-        "space_cache=v2"
       ];
     };
 
@@ -41,10 +37,8 @@
       fsType = "btrfs";
       options = [
         "subvol=@home"
-        "compress=zstd:1"
-        "discard=async"
+        "compress=zstd"
         "noatime"
-        "space_cache=v2"
       ];
     };
 
@@ -57,21 +51,20 @@
       ];
     };
 
-    fileSystems."/var/swap" = {
+    fileSystems."/swap" = {
       device = "/dev/mapper/luks-790845fb-5510-436c-9e2b-3abff24f506a";
       fsType = "btrfs";
       options = [
         "subvol=@swap"
-        "compress=zstd:1"
-        "discard=async"
+        "compress=zstd"
         "noatime"
-        "space_cache=v2"
       ];
     };
 
     swapDevices = [
       {
-        device = "/var/swap/swapfile";
+        device = "/swap/swapfile";
+        size = 24 * 1024;
       }
     ];
 
@@ -81,6 +74,7 @@
     boot.resumeDevice = "/dev/mapper/luks-790845fb-5510-436c-9e2b-3abff24f506a";
     boot.kernelParams = [
       "resume_offset=11168313"
+      "zswap.enabled=1"
     ];
   };
 }

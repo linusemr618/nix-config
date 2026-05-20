@@ -1,5 +1,21 @@
 {
   flake.nixosModules.core = {pkgs, ...}: {
+    boot = {
+      loader.systemd-boot.enable = true;
+      loader.efi.canTouchEfiVariables = true;
+      kernelPackages = pkgs.linuxPackages_latest;
+      initrd.systemd.enable = true;
+    };
+
+    services.fwupd.enable = true;
+    hardware = {
+      enableAllFirmware = true;
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+    };
+
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
