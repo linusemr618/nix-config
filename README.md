@@ -13,7 +13,7 @@ My personal NixOS configuration
 - [x] use nh
 - [x] zed
 - [x] firewall
-- [ ] switch to niri or hyprland
+- [x] (switch to niri or hyprland)
 - [x] docker
 - [x] ~~npins (vic/den)~~
 - [ ] disko & impermanence
