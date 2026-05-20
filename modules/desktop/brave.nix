@@ -1,5 +1,5 @@
 {
-  flake.homeModules.desktop = {
+  flake.homeModules.desktop = {pkgs, ...}: {
     programs.brave = {
       enable = true;
       #defaultSearchProviderEnabled = true;
@@ -11,7 +11,6 @@
         "lmjnegcaeklhafolokijcfjliaokphfk" # Video DownloadHelper
       ];
     };
-
-    #xdg.configFile."autostart/brave-browser.desktop".source = "${pkgs.brave}/share/applications/brave-browser.desktop";
+    xdg.autostart.entries = ["${pkgs.brave}/share/applications/brave-browser.desktop"];
   };
 }

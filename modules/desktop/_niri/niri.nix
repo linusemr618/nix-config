@@ -30,7 +30,6 @@
       polkit.enable = true;
     };
     services = {
-      gnome.gnome-keyring.enable = true;
       greetd = {
         enable = true;
         settings = {
@@ -44,9 +43,11 @@
       upower.enable = true;
     };
     systemd.user.services.niri.enableDefaultPath = false;
-    xdg.portal.config.niri = {
-      "org.freedesktop.impl.portal.FileChooser" = ["gtk"]; # or "kde"
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-gnome];
     };
+    services.gnome.gnome-keyring.enable = true;
   };
 
   flake.homeModules.desktopNiri = {pkgs, ...}: {

@@ -11,13 +11,13 @@
       defaultEditor = true;
       #mutableUserSettings = false;
       userSettings = {
-        edit_predictions = {
-          provider = "ollama";
-        };
         auto_install_extensions.nix = true;
         autosave = "on_focus_change";
         base_keymap = "VSCode";
         buffer_font_size = 15;
+        edit_predictions = {
+          provider = "copilot";
+        };
         hour_format = "hour24";
         icon_theme = {
           mode = "system";
@@ -43,6 +43,6 @@
         vim_mode = false;
       };
     };
-    #xdg.configFile."autostart/dev.zed.Zed.desktop".source = "${pkgs.zed-editor}/share/applications/dev.zed.Zed.desktop";
+    xdg.autostart.entries = ["${pkgs.zed-editor}/share/applications/dev.zed.Zed.desktop"];
   };
 }

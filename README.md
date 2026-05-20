@@ -4,7 +4,7 @@ My personal NixOS configuration
 ## To-Dos:
 - [ ] sops-nix
   - [ ] email
-  - [ ] seahorse integration
+  - [x] seahorse integration
   - [ ] wifi passwords
   - [ ] kde connect
   - [ ] backup

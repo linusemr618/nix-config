@@ -10,6 +10,7 @@
       dconf-editor
       fractal
       geary
+      gnome-boxes
       gnome-tweaks
       jetbrains.pycharm
       plex-desktop
@@ -20,6 +21,6 @@
       vlc
     ];
 
-    #xdg.configFile."autostart/proton.vpn.app.gtk.desktop".source = "${pkgs.proton-vpn}/share/applications/proton.vpn.app.gtk.desktop";
+    xdg.autostart.entries = ["${pkgs.proton-vpn}/share/applications/proton.vpn.app.gtk.desktop"];
   };
 }
