@@ -2,12 +2,6 @@
 My personal NixOS configuration
 
 ## To-Dos:
-- [ ] sops-nix
-  - [ ] email
-  - [x] seahorse integration
-  - [ ] wifi passwords
-  - [ ] kde connect
-  - [ ] backup
 - [x] devShell
 - [x] use xdg
 - [x] use nh
@@ -16,9 +10,16 @@ My personal NixOS configuration
 - [x] (switch to niri or hyprland)
 - [x] docker
 - [x] ~~npins (vic/den)~~
-- [ ] disko & impermanence
-- [ ] element desktop
-- [ ] tmux
 - [x] Restructure graphics and enable 32bit
-- [ ] check for default gnome options
+- [x] check for default gnome options (see niri-flake)
 - [x] research firmware options
+- [ ] sops-nix
+  - [x] seahorse integration
+  - [ ] wifi passwords
+  - [ ] kde connect
+  - [ ] backup solution
+- [ ] geary
+- [ ] disko
+- [ ] impermanence
+- [ ] maybe element desktop
+- [ ] tmux
