@@ -18,6 +18,7 @@
       initrd.kernelModules = [];
       kernelModules = ["kvm-intel"];
       extraModulePackages = [];
+      zswap.enable = true;
     };
 
     fileSystems."/" = {
@@ -74,7 +75,6 @@
     boot.resumeDevice = "/dev/mapper/luks-790845fb-5510-436c-9e2b-3abff24f506a";
     boot.kernelParams = [
       "resume_offset=11168313"
-      "zswap.enabled=1"
     ];
   };
 }
