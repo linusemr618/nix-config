@@ -1,5 +1,5 @@
 # nix-config
-My personal NixOS configuration
+My old personal NixOS configuration
 
 ## To-Dos:
 - [x] devShell
