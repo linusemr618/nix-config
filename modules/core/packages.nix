@@ -12,6 +12,7 @@
       android-tools
       devenv
       gcc
+      gdb
       git
       neovim
       wget
