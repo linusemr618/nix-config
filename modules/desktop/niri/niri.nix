@@ -9,18 +9,11 @@
         enable = true;
         useNautilus = true;
       };
-      #waybar.enable = true;
     };
     environment = {
       sessionVariables.NIXOS_OZONE_WL = "1";
       systemPackages = with pkgs; [
-        /*
-          alacritty
-        fuzzel
-        swaylock
-        mako
         swayidle
-        */
         xwayland-satellite
       ];
     };
@@ -56,7 +49,6 @@
     };
     home.packages = with pkgs; [
       kitty
-      swayidle
     ];
   };
 }
